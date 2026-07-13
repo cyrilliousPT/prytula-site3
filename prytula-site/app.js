@@ -3,9 +3,9 @@ const routes={
 };
 const nav=[['/about','About'],['/scripts','Scripts'],['/books','Books'],['/work-in-progress','WIP'],['/corporate-cv','CV'],['/branded','Branded'],['/games','Games'],['/blog','Blog'],['/contact','Contact']];
 const $=s=>document.querySelector(s);let data;
-const local=location.protocol==='file:';
-const link=path=>local?`#${path}`:path;
-const currentPath=()=>local?(location.hash.slice(1)||'/home'):location.pathname;
+const local=true;
+const link=path=>`#${path}`;
+const currentPath=()=>location.hash.slice(1)||'/home';
 function header(){const path=currentPath();return `<header class="nav"><a class="logo" href="${link('/home')}">Cyril Prytula</a><button class="menu" aria-label="Open menu">Menu +</button><nav class="nav-links">${nav.map(([u,n])=>`<a class="${path===u?'active':''}" href="${link(u)}">${n}</a>`).join('')}</nav></header>`}
 function footer(){return `<footer><span>© Cyril Prytula, 2026</span><a href="${link('/contact')}">Let’s make something →</a></footer>`}
 function home(){return `<section class="hero"><p class="eyebrow">Writer · Screenwriter · Producer</p><h1>Telling stories<br>& making them real</h1><p class="lead">Since 2008 — film, television, books, branded stories and interactive worlds.</p></section><main class="wrap"><section class="statement"><h2>Stories that move from a first thought to something people can watch, read and play.</h2><p>Explore scripts, books, work in progress and selected branded projects.</p></section><section class="grid">${data.homeCards.map((c,i)=>`<a class="card" href="${link(c.url)}"><span class="number">0${i+1}</span><div><p class="tag">${c.tag}</p><h3>${c.title}</h3></div><span class="arrow">Discover ↗</span></a>`).join('')}</section></main>`}
