@@ -1,0 +1,16 @@
+backend:
+  name: github
+  repo: REPLACE_WITH_YOUR_GITHUB_USERNAME/prytula-site
+  branch: main
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+collections:
+  - name: "site"
+    label: "Сайт"
+    files:
+      - name: "content"
+        label: "Тексты и проекты"
+        file: "data/site.json"
+        fields:
+          - { label: "Контактный email", name: "contactEmail", widget: "string" }
+          - { label: "Данные сайта (JSON)", name: "sections", widget: "object", fields: [] }
